@@ -1,4 +1,4 @@
-<h1> sup 👋 اهلا 👋x2 よろしく 👋x3 </h1>
+<h1> sup 👋 よろしく </h1>
 
 <h2> My Tech Stack </h2>
 <img src="https://github.com/IMIHonigmann/IMIHonigmann/assets/129157644/621b9dfc-9002-4264-8d6e-c0da6b7013d2" alt="React-icon" width="40" height="40"/>

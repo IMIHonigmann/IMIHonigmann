@@ -1,6 +1,6 @@
-sup 👋 اهلا 👋x2 よろしく 👋x3
+<h1> sup 👋 اهلا 👋x2 よろしく 👋x3 </h1>
 
-My Tech Stack
+<h2> My Tech Stack </h2>
 ![React-icon](https://github.com/IMIHonigmann/IMIHonigmann/assets/129157644/621b9dfc-9002-4264-8d6e-c0da6b7013d2)
 ![Typescript_logo_2020](https://github.com/IMIHonigmann/IMIHonigmann/assets/129157644/b556a9f4-a66e-4ae8-8db4-32e7fd65e878)
 ![Unofficial_JavaScript_logo_2](https://github.com/IMIHonigmann/IMIHonigmann/assets/129157644/8c017432-49fc-4355-9c28-40e04df5b284)

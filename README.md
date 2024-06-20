@@ -9,3 +9,4 @@
 <img src="https://github.com/IMIHonigmann/IMIHonigmann/assets/129157644/2ee071dd-0511-4e57-b7a5-6a30703f8e89" alt="Java-Logo" width="40" height="40"/>
 <img src="https://github.com/IMIHonigmann/IMIHonigmann/assets/129157644/767c8db5-a7ca-4f91-966d-185adbe49a5c" alt="HTML5_logo" width="40" height="40"/>
 <img src="https://github.com/IMIHonigmann/IMIHonigmann/assets/129157644/cfa6f524-c774-4adc-ae89-717c049c9bbb" alt="Blender_logo" width="40" height="40"/>
+<img src="https://github.com/IMIHonigmann/IMIHonigmann/assets/129157644/4657ba9d-2d94-450b-a933-10bdc07d86b7" alt="Blender_logo" width="40" height="40"/>

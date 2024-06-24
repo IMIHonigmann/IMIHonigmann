@@ -1,113 +1,204 @@
-import Image from "next/image";
+'use client'
+import { SegmentedControl, Text, Accordion, ActionIcon, AspectRatio, Burger, CopyButton, rem, Tooltip } from "@mantine/core";
+import elements from './elements.js'
+import { IconBrandGithub, IconCheck, IconCopy, IconCube } from "@tabler/icons-react";
+import { useDisclosure } from "@mantine/hooks";
+import {
+  IconShoppingCart,
+  IconLicense,
+  IconMessage2,
+  IconBellRinging,
+  IconMessages,
+  IconFingerprint,
+  IconKey,
+  IconTopologyFull,
+  IconSettings,
+  IconMath,
+  Icon2fa,
+  IconUsers,
+  IconFileAnalytics,
+  IconDatabaseImport,
+  IconReceipt2,
+  IconReceiptRefund,
+  IconLogout,
+  IconSwitchHorizontal,
+  IconQuestionMark,
+  IconHome2
+} from '@tabler/icons-react';
+import classes from './NavbarSegmented.module.css';
+import { useState } from "react";
+import Link from "next/link.js";
+
+const tabs = {
+  account: [
+    { link: '', label: 'Who am I', icon: IconQuestionMark },
+    { link: '', label: 'What do i do', icon: IconQuestionMark },
+    { link: '', label: 'What did I do', icon: IconCube },
+    { link: '', label: 'My interests', icon: IconQuestionMark },
+  ],
+  general: [
+    { link: '', label: 'Orders', icon: IconShoppingCart },
+    { link: '', label: 'Receipts', icon: IconLicense },
+    { link: '', label: 'Reviews', icon: IconMessage2 },
+    { link: '', label: 'Messages', icon: IconMessages },
+    { link: '', label: 'Customers', icon: IconUsers },
+    { link: '', label: 'Refunds', icon: IconReceiptRefund },
+    { link: '', label: 'Files', icon: IconFileAnalytics },
+  ],
+  bruh: [
+    { link: '', label: 'Orders', icon: IconShoppingCart },
+    { link: '', label: 'Receipts', icon: IconLicense },
+    { link: '', label: 'Reviews', icon: IconMessage2 },
+    { link: '', label: 'Messages', icon: IconMessages },
+    { link: '', label: 'Customers', icon: IconUsers },
+    { link: '', label: 'Refunds', icon: IconReceiptRefund },
+    { link: '', label: 'Files', icon: IconFileAnalytics },
+  ],
+};
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+  const burgerDivStyles: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'fixed',
+    top: 8,
+    left: 8,
+    padding: '10px', // Adjusted padding for better usability
+    transform: 'scale(1.5)',
+    backgroundColor: 'green',
+    width: '100%', // Ensures a fixed width to help with centering
+    height: '40px', // To balance the dimensions of the container div
+    boxSizing: 'border-box' // Ensure padding/decorations are included in the element's total width and height
+  };
+  
+  const burgerStyles: React.CSSProperties = {
+    rotate: '-5deg',
+    // width: '20%',
+  };
+
+
+
+  const [opened, { toggle }] = useDisclosure();
+  const items = elements.map((item, index) => (
+    <Accordion.Item key={index} value={item.title}>
+      <Accordion.Control icon={item.emoji}>{item.title}</Accordion.Control>
+      <Accordion.Panel>{item.innerText}</Accordion.Panel>
+    </Accordion.Item>
+  ));
+
+  return (
+    <div style={{display: 'flex' }}>
+      {opened ? <NavbarSegmented /> : ''}
+      <div className="">
+        <h1 className="text-9xl mt-10"> Yo </h1>
+        <h2 className="text-7xl mt-10 mb-8"> Whats up</h2>
+        <p> 
+          {`I'm Homam Mousa and currently studying International Computer Science and Media at HTW.
+          Even though I love programming that's not the only thing I'm passionate about`}
+        </p>
+
+        <h1 className="text-9xl mt-10"> {`What I do`} </h1>
+        <ul>
+          <li> Programming (duh) </li>
+          <li> Math </li>
+          <li> Martial Arts </li>
+        </ul>
+          <Accordion variant="contained" radius="xl">
+              {items}
+          </Accordion>
+          <AspectRatio ratio={16 / 9}>
+          <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3063.1749122798933!2d13.523384674007643!3d52.45661700362782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a848bc4c146fdd%3A0xcdaef78fbd909c09!2sHochschule%20f%C3%BCr%20Technik%20und%20Wirtschaft%20Berlin%20(HTW%20Berlin)%20-%20Campus%20Wilhelminenhof!5e0!3m2!1sde!2sde!4v1718835047795!5m2!1sde!2sde"
+          title="Google map"
+          style={{ border: 0 }}
+          />
+          </AspectRatio>
+          <div className="flex items-center justify-center h-full">
+            <span> Wilhelminenhofstraße 75A, 12459 Berlin, Germany </span>
+              <CopyButton value="Wilhelminenhofstraße 75A, 12459 Berlin, Germany" timeout={2000}>
+            {({ copied, copy }) => (
+              <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
+                <ActionIcon color={copied ? 'teal' : 'gray'} variant="subtle" onClick={copy}>
+                  {copied ? (
+                    <IconCheck style={{ width: rem(16) }} />
+                  ) : (
+                    <IconCopy style={{ width: rem(16) }} />
+                  )}
+                </ActionIcon>
+              </Tooltip>
+            )}
+            </CopyButton>
+          </div>
+          <div style={burgerDivStyles}>
+            <Burger style={burgerStyles} opened={opened} onClick={toggle} aria-label="Toggle navigation" />
+          </div>
+      </div>
+    </div>
+  );
+  
+}
+function NavbarSegmented() {
+  const [section, setSection] = useState<'account' | 'general'>('account');
+  const [active, setActive] = useState('Billing');
+
+  const links = tabs[section].map((item) => (
+    <a
+      className={classes.link}
+      data-active={item.label === active || undefined}
+      href={item.link}
+      key={item.label}
+      onClick={(event) => {
+        event.preventDefault();
+        setActive(item.label);
+      }}
+    >
+      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <span>{item.label}</span>
+    </a>
+  ));
+
+  return (
+    <nav className={classes.navbar}>
+      <div>
+        <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
+          homammousa15@gmail.com
+        </Text>
+
+        <SegmentedControl
+          value={section}
+          onChange={(value: any) => setSection(value)}
+          transitionTimingFunction="ease"
+          fullWidth
+          data={[
+            { label: 'About me', value: 'account' },
+            { label: 'Portfolio', value: 'general' },
+            { label: 'System', value: 'bruh' },
+          ]}
         />
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      <div className={classes.navbarMain}>{links}</div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className={classes.footer}>
+        <Link href="https://github.com/IMIHonigmann" className={classes.link}>
+          <IconBrandGithub className={classes.linkIcon} stroke={1.5} />
+          <span>Github</span>
+        </Link>
+        <Link href="/#" className={classes.link}>
+          <IconHome2 className={classes.linkIcon} stroke={1.5} />
+          <span> Home </span>
+        </Link>
+        <Link href="/math" className={classes.link}>
+          <IconMath className={classes.linkIcon} stroke={1.5} />
+          <span>Math</span>
+        </Link>
+        <Link href="/DSA" className={classes.link}>
+          <IconTopologyFull className={classes.linkIcon} stroke={1.5} />
+          <span>Algorithms & Datastructures (DSA)</span>
+        </Link>
       </div>
-    </main>
+    </nav>
   );
 }

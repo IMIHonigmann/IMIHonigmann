@@ -1,3 +1,24 @@
+.dimBG {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99; 
+  transition-duration: .3s;
+}
+
+.undimBG {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 500; 
+  transition-duration: .3s;
+}
+
 .navbar {
     background-color: var(--mantine-color-body);
     height: 100vh;
@@ -9,20 +30,51 @@
     overflow-y: auto;
     background-color: #fcfcfc;
     position: fixed;
-    animation: fadein 0.2s forwards;
+    animation: fadein ease-out .2s forwards;
   }
-  
 
+.navbarOut {
+    background-color: var(--mantine-color-body);
+    height: 100vh;
+    padding: var(--mantine-spacing-md);
+    display: flex;
+    flex-direction: column;
+    border-right: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    z-index: 1000;
+    overflow-y: auto;
+    background-color: #fcfcfc;
+    position: fixed;
+    animation: fadeout ease-in .1s forwards;
+}
+  
   @keyframes fadein {
     0% {
+      transform: translateX(-100px);
       width: 0;
     }
-    25% {
+    50% {
       opacity: 1;
     }
     100% {
+      transform: translateX(0px);
       opacity: 1;
       width: 300px;
+    }
+  }
+
+  @keyframes fadeout {
+    0% {
+      transform: translateX(0px);
+      opacity: 1;
+      width: 300px;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-100px);
+      width: 0;
+      opacity: 0;
     }
   }
   

@@ -1,32 +1,24 @@
 'use client'
-import { SegmentedControl, Text, Accordion, ActionIcon, AspectRatio, Burger, CopyButton, rem, Tooltip } from "@mantine/core";
+import { SegmentedControl, Text, Accordion, ActionIcon, AspectRatio, Burger, CopyButton, rem, Tooltip, Paper, Button } from "@mantine/core";
 import elements from './elements.js'
 import { IconBrandGithub, IconCheck, IconCopy, IconCube } from "@tabler/icons-react";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useClickOutside } from "@mantine/hooks";
 import {
   IconShoppingCart,
   IconLicense,
   IconMessage2,
-  IconBellRinging,
   IconMessages,
-  IconFingerprint,
-  IconKey,
   IconTopologyFull,
   IconSettings,
   IconMath,
-  Icon2fa,
   IconUsers,
   IconFileAnalytics,
-  IconDatabaseImport,
-  IconReceipt2,
   IconReceiptRefund,
-  IconLogout,
-  IconSwitchHorizontal,
   IconQuestionMark,
   IconHome2
 } from '@tabler/icons-react';
 import classes from './NavbarSegmented.module.css';
-import { useState } from "react";
+import { useState, forwardRef, useEffect } from "react";
 import Link from "next/link.js";
 
 const tabs = {
@@ -56,6 +48,12 @@ const tabs = {
   ],
 };
 
+interface NavbarSegmentedProps {
+  opened: boolean;
+}
+
+
+
 export default function Home() {
 
   const burgerDivStyles: React.CSSProperties = {
@@ -68,6 +66,7 @@ export default function Home() {
     padding: '10px', // Adjusted padding for better usability
     transform: 'scale(1.5)',
     backgroundColor: 'green',
+    zIndex: 999,
     width: '100%', // Ensures a fixed width to help with centering
     height: '40px', // To balance the dimensions of the container div
     boxSizing: 'border-box' // Ensure padding/decorations are included in the element's total width and height
@@ -80,7 +79,23 @@ export default function Home() {
 
 
 
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { toggle, open, close }] = useDisclosure();
+  const [curOpened, setCurOpened] = useState(false);
+  const ref = useClickOutside(() => setCurOpened(false));
+
+  useEffect(() => {
+    if (curOpened) {
+      open();  // Sets 'opened' to true
+    } else {
+      close();  // Sets 'opened' to false
+    }
+  }, [curOpened, open, close]);
+
+  function burgerFunc() {
+    setCurOpened(value => !value);
+  }
+
+
   const items = elements.map((item, index) => (
     <Accordion.Item key={index} value={item.title}>
       <Accordion.Control icon={item.emoji}>{item.title}</Accordion.Control>
@@ -89,8 +104,14 @@ export default function Home() {
   ));
 
   return (
-    <div style={{display: 'flex' }}>
-      {opened ? <NavbarSegmented /> : ''}
+    <div style={{display: 'flex' }} className={opened ? classes.dimBG : classes.undimBG}>
+      <div className={classes.fixedfull}></div>
+      <div ref={ref}>
+        <NavbarSegmented opened={curOpened} />
+        <div style={burgerDivStyles}>
+              <Burger style={burgerStyles} opened={opened} onClick={burgerFunc} aria-label="Toggle navigation" />
+        </div>
+      </div>
       <div className="">
         <h1 className="text-9xl mt-10"> Yo </h1>
         <h2 className="text-7xl mt-10 mb-8"> Whats up</h2>
@@ -108,13 +129,13 @@ export default function Home() {
           <Accordion variant="contained" radius="xl">
               {items}
           </Accordion>
-          <AspectRatio ratio={16 / 9}>
+          { /* <AspectRatio ratio={16 / 9}>
           <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3063.1749122798933!2d13.523384674007643!3d52.45661700362782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a848bc4c146fdd%3A0xcdaef78fbd909c09!2sHochschule%20f%C3%BCr%20Technik%20und%20Wirtschaft%20Berlin%20(HTW%20Berlin)%20-%20Campus%20Wilhelminenhof!5e0!3m2!1sde!2sde!4v1718835047795!5m2!1sde!2sde"
           title="Google map"
           style={{ border: 0 }}
           />
-          </AspectRatio>
+          </AspectRatio> */ }
           <div className="flex items-center justify-center h-full">
             <span> Wilhelminenhofstraße 75A, 12459 Berlin, Germany </span>
               <CopyButton value="Wilhelminenhofstraße 75A, 12459 Berlin, Germany" timeout={2000}>
@@ -131,15 +152,14 @@ export default function Home() {
             )}
             </CopyButton>
           </div>
-          <div style={burgerDivStyles}>
-            <Burger style={burgerStyles} opened={opened} onClick={toggle} aria-label="Toggle navigation" />
-          </div>
+          <br/>
+          <br/>
       </div>
     </div>
   );
   
 }
-function NavbarSegmented() {
+const NavbarSegmented = forwardRef<HTMLDivElement, NavbarSegmentedProps>(function NavbarSegmented(props, ref) {
   const [section, setSection] = useState<'account' | 'general'>('account');
   const [active, setActive] = useState('Billing');
 
@@ -160,7 +180,7 @@ function NavbarSegmented() {
   ));
 
   return (
-    <nav className={classes.navbar}>
+    <nav className={props.opened ? classes.navbar : classes.navbarOut} ref={ref}>
       <div>
         <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
           homammousa15@gmail.com
@@ -180,7 +200,6 @@ function NavbarSegmented() {
       </div>
 
       <div className={classes.navbarMain}>{links}</div>
-
       <div className={classes.footer}>
         <Link href="https://github.com/IMIHonigmann" className={classes.link}>
           <IconBrandGithub className={classes.linkIcon} stroke={1.5} />
@@ -201,4 +220,4 @@ function NavbarSegmented() {
       </div>
     </nav>
   );
-}
+});

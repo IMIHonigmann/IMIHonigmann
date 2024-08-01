@@ -56,21 +56,17 @@ interface NavbarSegmentedProps {
 
 export default function Home() {
 
-  const burgerDivStyles: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+const burgerDivStyles: React.CSSProperties = {
     position: 'fixed',
     top: 8,
     left: 8,
-    padding: '10px', // Adjusted padding for better usability
+    padding: '10px',
     transform: 'scale(1.5)',
-    backgroundColor: 'green',
-    zIndex: 999,
-    width: '100%', // Ensures a fixed width to help with centering
-    height: '40px', // To balance the dimensions of the container div
-    boxSizing: 'border-box' // Ensure padding/decorations are included in the element's total width and height
-  };
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    zIndex: 9999,
+    display: 'flex',
+    alignItems: 'center',
+};
   
   const burgerStyles: React.CSSProperties = {
     rotate: '-5deg',
@@ -105,6 +101,7 @@ export default function Home() {
 
   return (
     <div style={{display: 'flex' }} className={opened ? classes.dimBG : classes.undimBG}>
+      <title> Homam Mousa </title>
       <div className={classes.fixedfull}></div>
       <div ref={ref}>
         <NavbarSegmented opened={curOpened} />
@@ -112,7 +109,9 @@ export default function Home() {
               <Burger style={burgerStyles} opened={opened} onClick={burgerFunc} aria-label="Toggle navigation" />
         </div>
       </div>
-      <div className="">
+      <div className="" style={{marginLeft: 30 }}>
+        <br/>
+        <br/>
         <h1 className="text-9xl mt-10"> Yo </h1>
         <h2 className="text-7xl mt-10 mb-8"> Whats up</h2>
         <p> 
@@ -120,22 +119,15 @@ export default function Home() {
           Even though I love programming that's not the only thing I'm passionate about`}
         </p>
 
-        <h1 className="text-9xl mt-10"> {`What I do`} </h1>
-        <ul>
+        <h1 className="text-9xl mt-10"> {`What I do and learn about`} </h1>
+        {/* <ul>
           <li> Programming (duh) </li>
           <li> Math </li>
           <li> Martial Arts </li>
-        </ul>
-          <Accordion variant="contained" radius="xl">
+        </ul> */}
+          <Accordion variant="default" radius="xl">
               {items}
           </Accordion>
-          { /* <AspectRatio ratio={16 / 9}>
-          <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3063.1749122798933!2d13.523384674007643!3d52.45661700362782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a848bc4c146fdd%3A0xcdaef78fbd909c09!2sHochschule%20f%C3%BCr%20Technik%20und%20Wirtschaft%20Berlin%20(HTW%20Berlin)%20-%20Campus%20Wilhelminenhof!5e0!3m2!1sde!2sde!4v1718835047795!5m2!1sde!2sde"
-          title="Google map"
-          style={{ border: 0 }}
-          />
-          </AspectRatio> */ }
           <div className="flex items-center justify-center h-full">
             <span> Wilhelminenhofstraße 75A, 12459 Berlin, Germany </span>
               <CopyButton value="Wilhelminenhofstraße 75A, 12459 Berlin, Germany" timeout={2000}>
@@ -160,8 +152,12 @@ export default function Home() {
   
 }
 const NavbarSegmented = forwardRef<HTMLDivElement, NavbarSegmentedProps>(function NavbarSegmented(props, ref) {
-  const [section, setSection] = useState<'account' | 'general'>('account');
+  const [section, setSection] = useState<'account' | 'general' | 'bruh'>('account');
   const [active, setActive] = useState('Billing');
+
+  useEffect(() => {
+    setSection('account');
+  }, [props.opened]);
 
   const links = tabs[section].map((item) => (
     <a
@@ -181,11 +177,12 @@ const NavbarSegmented = forwardRef<HTMLDivElement, NavbarSegmentedProps>(functio
 
   return (
     <nav className={props.opened ? classes.navbar : classes.navbarOut} ref={ref}>
+      <br/>
+      <br/>
       <div>
         <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
           homammousa15@gmail.com
         </Text>
-
         <SegmentedControl
           value={section}
           onChange={(value: any) => setSection(value)}

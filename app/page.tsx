@@ -1,7 +1,7 @@
 'use client'
 import { SegmentedControl, Text, Accordion, ActionIcon, AspectRatio, Burger, CopyButton, rem, Tooltip, Paper, Button } from "@mantine/core";
 import elements from './elements.js'
-import { IconBrandGithub, IconCheck, IconCopy, IconCube } from "@tabler/icons-react";
+import { IconBlob, IconBrandGithub, IconCheck, IconCopy, IconCube, IconZoomCode } from "@tabler/icons-react";
 import { useDisclosure, useClickOutside } from "@mantine/hooks";
 import {
   IconShoppingCart,
@@ -202,13 +202,17 @@ const NavbarSegmented = forwardRef<HTMLDivElement, NavbarSegmentedProps>(functio
           <IconBrandGithub className={classes.linkIcon} stroke={1.5} />
           <span>Github</span>
         </Link>
+        <Link href="/blog" className={classes.link}>
+          <IconZoomCode className={classes.linkIcon} stroke={1.5} />
+          <span> Behind The Scenes & Progress </span>
+        </Link>
         <Link href="/#" className={classes.link}>
           <IconHome2 className={classes.linkIcon} stroke={1.5} />
           <span> Home </span>
         </Link>
         <Link href="/math" className={classes.link}>
           <IconMath className={classes.linkIcon} stroke={1.5} />
-          <span>Math</span>
+          <span> Math </span>
         </Link>
         <Link href="/DSA" className={classes.link}>
           <IconTopologyFull className={classes.linkIcon} stroke={1.5} />

@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, Fragment } from 'react';
 import '@mantine/core/styles.css';
+import './blog.css';
 import { Card, ColorSchemeScript, MantineProvider, Progress } from '@mantine/core';
 import { TextInput, Button, Group } from '@mantine/core';
 import { Bar } from 'react-chartjs-2';
@@ -21,17 +22,21 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 import Image from 'next/image'
 
 export default function Blog() {
+
+  const textRef = useRef(null);
+
     return (
       <MantineProvider>
-        <div style={{marginLeft: 10}}>
-          <h1> The Making of Dying Sprite </h1>
+        <div ref={textRef} style={{marginLeft: 10, paddingInline: '40px', width: '60%', margin: '0 auto', backgroundColor: 'white'}}>
+          <h1 className="dying-sprite"> Dying Sprite </h1>
+          <h1> Behind the Scenes </h1>
 
           <p> By far the hardest project I have ever done. Here I will show you how I tackled some of the biggest challenges that came up in the project and how I solved them. </p>
           <CoverImageSlider />
           <GIFImageSlider />
           <StickImageSlider />
           <br/>
-          <h2> Body Physics, Dismemberment and Enemy Reactions </h2>
+          <h2> Body Physics <br/> Dismemberment <br/> Enemy Reactions </h2>
           <p> The game had to feature fully working limb hitboxes which should signal the player that the enemies react to it </p>
           <p> I solved the problems by creating a ragdoll while using these created newly created physics bones as hitboxes and had some fun in the initial testing </p>
           <Image
@@ -78,12 +83,12 @@ export default function Blog() {
             height={288}
             alt="Cover picture"
           />
-          <h2> Pathfinding in a big map </h2>
+          <h2> Pathfinding<br/>in a big map </h2>
           <p> Pathfinding was a major concern since just generating a NavMesh for the Map was not feasibile. The game would run at 25 FPS consistently when more than 20 Enemies were on the map. This is obviously bad when we have continuous spawning </p>
           <h3> The solution: A* Pathfinding </h3>
           <p> I have used the A* Pathfinding Package which drastically improved performance. The paid version also has the ability to dynamically create NavMeshes fast (not in realtime but still fast). Perfect for the game. The only issue is that when exporting the enemies fly slightly above the ground. Cant be fixed but has been fixed in the new unity version in the making of this blogpost </p>
 
-          <h2> Procedural Animation System </h2>
+          <h2>Procedural<br/>Animation<br/>System</h2>
           <p> At first I tried to create an animation for everything but I quickly faced a problem with this approach. You need a transition to each state and these states must transition to other states to work correctly </p>
           <p> The solution was to use a procedural animation system where each action is controlled by tweening and code but this created another issue where the procedural transformations interfere with eachother or cancel eachother out. </p>
           <p> Thankfully this was simple to fix. The idea is to separate each distinct action that involves a certain type of tweening and transformation into a separate pivot child. Each of these pivot children can now read the local values easily without being distorted by other animations </p>
@@ -216,18 +221,18 @@ export default function Blog() {
           }}>
           <Image style={{ padding: '20px' }}
             src="/img/colorless.jpeg"
-            width={896}
-            height={504}
+            width={896*0.8}
+            height={504*0.8}
             alt="Cover picture"
           />
           <Image style={{ padding: '20px' }}
             src="/img/cover.jpeg"
-            width={896}
-            height={504}
+            width={896*0.8}
+            height={504*0.8}
             alt="Cover picture"
           />
           </div>
-          <h2> The poll results (drumroll please): </h2>
+          <h2> The poll results<br/>(drumroll please) </h2>
           <NumberDiagram />
           <p> So based on that I ran with the second version </p>
           <p> I also love comparing it to older builds and seeing how far the project went </p>
@@ -239,7 +244,7 @@ export default function Blog() {
 
           <p> I tinkered a bit with raytracing but this resulted in poor perfoermance and since the pc already had so many things to deal with like the high viewing distance, minimal occlusion and the high enemy counts it was just better to improve the look by hand and the final result turned out better because of it. </p>
           
-          <h3> Final Words </h3>
+          <h2> Final <br/> Words </h2>
           <p> I got a diploma from my teacher for this project and it felt so surreal reading Skyrim in a diploma certified from the state </p>
           {/* Outstanding Commitment */}
           <p> Even though there are some things I would approach differently this project taught me so many things. I feel much more confident in tackling new projects now and would love to do something at this scale again. </p>
@@ -263,7 +268,7 @@ export default function Blog() {
         {
           label: 'Stylized Lighting (Version 2)',
           data: [num2],
-          backgroundColor: 'RGB(34, 139, 34)',
+          backgroundColor: '#FF8C00',
         },
       ],
     };

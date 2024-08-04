@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useEffect, useState, useRef, Fragment } from 'react';
 import '@mantine/core/styles.css';
 import './blog.css';
@@ -12,6 +13,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ChartOptions,
 } from 'chart.js';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -21,17 +23,31 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 import Image from 'next/image'
 
-export default function Blog() {
+function Blog() {
 
   const textRef = useRef(null);
 
     return (
       <MantineProvider>
-        <div ref={textRef} style={{marginLeft: 10, paddingInline: '40px', width: '60%', margin: '0 auto', backgroundColor: 'white'}}>
+        <div ref={textRef} style={{marginLeft: 10, paddingInline: '40px', width: '60%', margin: '0 auto', backgroundColor: 'white'}}  className="blog-container">
           <h1 className="dying-sprite"> Dying Sprite </h1>
           <h1> Behind the Scenes </h1>
 
-          <p> By far the hardest project I have ever done. Here I will show you how I tackled some of the biggest challenges that came up in the project and how I solved them. </p>
+          <p> This is by far the hardest project I have ever done. Dying Sprite is a highschool coding project I had to finish in roundabout 6 months using SCRUM. The problem is that I had no clue how unity works so I not only had to juggle my graduation exams but also creating a project while learning the engine for it.
+            I was obsessed with it way too obsessed. So obsessed to the point where there were days where I sat from 11 AM to 4 AM to the next day, learning the engine and working on the game. </p>
+          <p>
+            This makes it impossible to cover everything but since many people requested it I still want to show you what the biggest challenges were that I faced and how I solved them so you can apply it to your own project if you want to. 
+            Another thing: this blog is not in chronological order and thats on purpose. I have created it this way so you can jump to the parts you want to know more about.
+          </p>
+          <ol>
+            <li><a> Body Physics, Dismemberment, Enemy Reactions </a></li>
+            <li><a> Pathfinding in a big map </a></li>
+            <li><a> Procedural Animation System </a></li>
+            <li><a> Sacrifices </a></li>
+            <li><a> Lighting </a></li>
+            <li><a> The lighting poll results </a></li>
+            <li><a> Final Words </a></li>
+          </ol>
           <CoverImageSlider />
           <GIFImageSlider />
           <StickImageSlider />
@@ -98,7 +114,10 @@ export default function Blog() {
             height={504}
             alt="Cover picture"
           />
-          <p> The hierarchy is arbitrary but the lowest child is the only one that can handle handmade animation since it directly interacts with the rig. Any viewmodel animation can now be used with seamless integration to the animation system </p>
+          <p> The hierarchy is arbitrary but the lowest child is the only one that can handle handmade animation since it directly interacts with the rig. 
+            Any viewmodel animation can now be used with seamless integration to the animation system. 
+            The system is heavily dependent on my beloved LERPS (linear interpolation) and I used the Dotween Package to implement the components faster.
+            </p>
           <p> I highly recommend using inverse kinematics in unity since importing animations from blender can be a a goddamn hastle to get them to work correctly </p>
           <Image
             src="/img/akanim.gif"
@@ -143,6 +162,7 @@ export default function Blog() {
           referrerPolicy="strict-origin-when-cross-origin">
           </iframe>
           <h3> Clip Prevention </h3>
+          <p> Shoot a raycast forwards and take the distance from the origin to the collision as the rotation factor </p>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/RhizKjMz_7A?si=7-io_62AluOgZ8_E" 
           title="YouTube video player" 
           frameBorder="0" 
@@ -155,8 +175,13 @@ export default function Blog() {
           web-share"
           referrerPolicy="strict-origin-when-cross-origin">
           </iframe>
-          <h3> Screenshake + Recoil (Also works on Dual Wielded Weapons) </h3>
-          
+          <h3> Screenshake + Recoil <br/>(Also works on Dual Wielded Weapons) </h3>
+          <p> Add a noise to the camera with an arbitrary factor as the amplitude but be careful not to add too much since doing a camera movement that has not been controlled by the player tends to cause motion sickness. </p>
+              <p>
+              If you look closely you can see that the camera bobs like a sinewave while standing and while moving and that the guns position reaches the midpoint slightly delayed.
+              Imagine the frequency and the amplitude of the camera bobbing like an exponential factor to the players need for tolerance. 
+              It gets sickening really fast so choose your parameter values wisely
+             </p>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/ZkUCKswS-F4?si=YVCo-xZ75o6Dk_U_" 
           title="YouTube video player" 
           frameBorder="0" 
@@ -183,6 +208,7 @@ export default function Blog() {
           referrerPolicy="strict-origin-when-cross-origin">
           </iframe>
           <h3> ADS: Aiming Down Sights </h3>
+          <p> Define a new rotation and position for each weapon and interpolate to that </p>
           <Image
             src="/img/aimdownsights.jpeg"
             width={896}
@@ -191,6 +217,9 @@ export default function Blog() {
             alt="UZI Animation"
           />
           <h3> Extra: Empty Shots </h3>
+          <p> The weapon system is also designed to take in parameters like at how many shots the sound of the gun running empty starts to play. It includes other parameters like the spread and the raycasting range and the raycast takes the normal of the target surface, uses it as an orientation and places a hole decal at the point which creates a bullet impact effect. </p>
+          <p>
+          I used to have a projectile based variant but I decided to scrap it since there isnt much use for a projectile based approach (outside of ricocheting maybe but thats too specific and unnoticable to maintain a different version for). Simply put: Maintaining a projectile based variant of the script added extra complexity which didnt result in a better result but Im still glad I took the plunge and know how to implement it in another project when I need it. Here is the result with some slightly extreme parameter values for the sake of visualization. </p>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/iyYXtiHZOl0?si=zKauEwanNz4bHGJg" 
           title="YouTube video player" 
           frameBorder="0" 
@@ -273,8 +302,8 @@ export default function Blog() {
       ],
     };
   
-    const options = {
-      indexAxis: 'x' as const, // Ensures the indexAxis is treated as a literal type
+    const options: ChartOptions<'bar'> = {
+      indexAxis: 'x', // 'x' or 'y' should be accepted now
       animation: {
         duration: 750, // Duration of the animation in milliseconds
         easing: 'easeInOutCubic', // Easing function for the animation
@@ -437,3 +466,5 @@ const StickImageSlider = () => {
     </Card>
   );
 };
+
+export default Blog;

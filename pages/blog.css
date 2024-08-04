@@ -1,3 +1,12 @@
+html, body {
+  font-family: 'Bahnschrift';
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(244, 244, 244); /* Set background color to cover entire screen */
+  letter-spacing: 0px;
+}
+
 h1 {
     font-size: 13rem; /* Fibonacci(6) * 1rem */
     text-align: center;
@@ -24,16 +33,13 @@ h1 {
     font-size: 1rem; /* Fibonacci(1) * 1rem */
   }
 
-  body {
-    font-family: 'Bahnschrift';
-  }
-
   .dying-sprite {
     position: relative;
     display: inline-block;
     font-weight: bold;
     color: black; /* Text color to reveal */
     overflow: hidden;
+    z-index: 5;
   }
   
   .dying-sprite::before {
@@ -57,12 +63,16 @@ h1 {
     }
   }
 
-  .highlight {
-    background-color: black;
-    transition: background-color 0.5s ease, color 0.5s ease;
-  }
-  
-  .remove-background {
-    background-color: transparent;
-    color: black; /* Reset text color */
-  }
+  img {
+    display: block;
+    margin: 0 auto; /* Centers all images horizontally */
+    max-width: 100%; /* Ensures images are responsive */
+    height: 100%;
+    width: auto;
+}
+
+iframe {
+  display: block;
+    margin: 0 auto; /* Centers all images horizontally */
+    max-width: 100%; /* Ensures images are responsive */
+}

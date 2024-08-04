@@ -1,0 +1,73 @@
+body {
+  background-color: black;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+.slideshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 3rem;
+  position: relative;
+  overflow: hidden; /* Prevent unwanted scroll */
+  z-index: 1; /* Lower z-index for slideshow elements */
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Lower z-index for slide elements */
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: scale(1.2);
+  letter-spacing: 8px;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  letter-spacing: 0px;
+  transition: opacity 4000ms, transform 4000ms, letter-spacing 4000ms;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: scale(1);
+  letter-spacing: 0px;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: scale(0.8);
+  letter-spacing: -2px;
+  transition: opacity 3000ms, transform 3000ms, letter-spacing 4000ms;
+}
+
+.slide-title, .main-content {
+  font-size: 3em;
+}
+
+.start-button {
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: #232323;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: perspective(500px) rotateX(0) rotateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:hover {
+  transform: perspective(500px) rotateX(-10deg) rotateY(10deg); /* 3D effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}

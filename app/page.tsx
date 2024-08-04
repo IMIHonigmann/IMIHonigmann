@@ -202,7 +202,7 @@ const NavbarSegmented = forwardRef<HTMLDivElement, NavbarSegmentedProps>(functio
           <IconBrandGithub className={classes.linkIcon} stroke={1.5} />
           <span>Github</span>
         </Link>
-        <Link href="/blog" className={classes.link}>
+        <Link href="/animation" className={classes.link}>
           <IconZoomCode className={classes.linkIcon} stroke={1.5} />
           <span> Behind The Scenes & Progress </span>
         </Link>

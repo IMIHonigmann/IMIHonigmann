@@ -1,5 +1,6 @@
-import { withNextVideo } from "next-video/process";
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default withNextVideo(nextConfig);
+const nextConfig = {
+    // You can add your custom configuration here if needed
+  };
+  
+  export default nextConfig;

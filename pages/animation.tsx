@@ -11,9 +11,9 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 const GOTOBlog = ({ repoName }: any) => {
     useEffect(() => {
         setTimeout(() => {
-            window.location.href = '/blog';
+            window.location.href = repoName + '/blog';
         }, 6000)
-    }, []);
+    }, [repoName]);
     return (<>
     <Image style={{ width: '50%', height: 'auto' }}
             src={repoName + '/img/loading.gif'}

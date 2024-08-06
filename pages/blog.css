@@ -21,17 +21,10 @@ h1 {
     font-size: 3rem; /* Fibonacci(4) * 1rem */
   }
   
-  h4 {
-    font-size: 2rem; /* Fibonacci(3) * 1rem */
+  p, div {
+    font-size: 1.5rem; /* Fibonacci(3) * 1rem */
   }
   
-  h5 {
-    font-size: 1rem; /* Fibonacci(2) * 1rem */
-  }
-  
-  h6 {
-    font-size: 1rem; /* Fibonacci(1) * 1rem */
-  }
 
   .dying-sprite {
     position: relative;

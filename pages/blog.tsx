@@ -25,6 +25,15 @@ import Image from 'next/image'
 
 function Blog() {
 
+  const [useGHPages, setUseGHPages] = useState<Boolean>(true);
+  const [repoName, setRepoName] = useState<String>('');
+  useEffect(() => {
+    if(useGHPages) {
+      setRepoName('/IMIHonigmann');
+    }
+  }, [useGHPages]);
+  
+
   const textRef = useRef(null);
 
     return (
@@ -48,15 +57,15 @@ function Blog() {
             <li><a> The lighting poll results </a></li>
             <li><a> Final Words </a></li>
           </ol>
-          <CoverImageSlider />
-          <GIFImageSlider />
-          <StickImageSlider />
+          <CoverImageSlider repoName={repoName} />
+          <GIFImageSlider repoName={repoName} />
+          <StickImageSlider repoName={repoName} />
           <br/>
           <h2> Body Physics <br/> Dismemberment <br/> Enemy Reactions </h2>
           <p> The game had to feature fully working limb hitboxes which should signal the player that the enemies react to it </p>
           <p> I solved the problems by creating a ragdoll while using these created newly created physics bones as hitboxes and had some fun in the initial testing </p>
           <Image
-            src="/img/bodysystem.gif"
+            src={repoName + "/img/bodysystem.gif"}
             width={512}
             height={288}
             alt="UZI Animation"
@@ -64,16 +73,16 @@ function Blog() {
           {/* Middlefinger */}
           <p> This made it possible to assign different damage multipliers based on the limb. </p>
           <p> Creating hanging bodies was also possible and works with the shooting </p>
-          <div> When the enemy is killed an amplified force is applied on the limb causing the body to fly backwards and the limb disappears and splatters blood all over. Creating very satisfying feedback. </div>
+          <div> When the enemy is killed an amplified force is applied on the limb causing the body to fly backwards and the limb disappears and splatters blood all over, creating very satisfying feedback. </div>
           <Image
-            src="/img/dismemberment.gif"
+            src={repoName + "/img/dismemberment.gif"}
             width={512}
             height={288}
             alt="UZI Animation"
           />
           <div> The more damage the enemy gets the more he walks forward in an injured way which made it possible to see ememy health instinctively without having a big ugly healthbar over their head</div>
           <Image
-            src="/img/animationblending.gif"
+            src={repoName + "/img/animationblending.gif"}
             width={512}
             height={288}
             alt="UZI Animation"
@@ -94,7 +103,7 @@ function Blog() {
           </iframe>
           <p> So the interaction between the enemy and the player is smooth now </p>
           <Image
-            src="/img/ending.gif"
+            src={repoName + "/img/ending.gif"}
             width={512}
             height={288}
             alt="Cover picture"
@@ -109,7 +118,7 @@ function Blog() {
           <p> The solution was to use a procedural animation system where each action is controlled by tweening and code but this created another issue where the procedural transformations interfere with eachother or cancel eachother out. </p>
           <p> Thankfully this was simple to fix. The idea is to separate each distinct action that involves a certain type of tweening and transformation into a separate pivot child. Each of these pivot children can now read the local values easily without being distorted by other animations </p>
           <Image
-            src="/img/animationsystem.gif"
+            src={repoName + "/img/animationsystem.gif"}
             width={896}
             height={504}
             alt="Cover picture"
@@ -120,25 +129,25 @@ function Blog() {
             </p>
           <p> I highly recommend using inverse kinematics in unity since importing animations from blender can be a a goddamn hastle to get them to work correctly </p>
           <Image
-            src="/img/akanim.gif"
+            src={repoName + "/img/akanim.gif"}
             width={896}
             height={504}
             alt="AK Animation"
           />
           <Image
-            src="/img/uzianim.gif"
+            src={repoName + "/img/uzianim.gif"}
             width={896}
             height={504}
             alt="UZI Animation"
           />
           <Image
-            src="/img/flamethrower.gif"
+            src={repoName + "/img/flamethrower.gif"}
             width={896}
             height={504}
             alt="UZI Animation"
           />
           <Image
-            src="/img/sniperrechamber.gif"
+            src={repoName + "/img/sniperrechamber.gif"}
             width={896}
             height={504}
             alt="UZI Animation"
@@ -210,7 +219,7 @@ function Blog() {
           <h3> ADS: Aiming Down Sights </h3>
           <p> Define a new rotation and position for each weapon and interpolate to that </p>
           <Image
-            src="/img/aimdownsights.jpeg"
+            src={repoName + "/img/aimdownsights.jpeg"}
             width={896}
             height={504}
             style={{ width: '80%', height: 'auto', objectFit: 'cover', maxWidth: '896px', paddingInline: '2px' }}
@@ -249,13 +258,13 @@ function Blog() {
             alignItems: 'center', // Centers vertically
           }}>
           <Image style={{ padding: '20px' }}
-            src="/img/colorless.jpeg"
+            src={repoName + "/img/colorless.jpeg"}
             width={896*0.8}
             height={504*0.8}
             alt="Cover picture"
           />
           <Image style={{ padding: '20px' }}
-            src="/img/cover.jpeg"
+            src={repoName + "/img/cover.jpeg"}
             width={896*0.8}
             height={504*0.8}
             alt="Cover picture"
@@ -275,6 +284,12 @@ function Blog() {
           
           <h2> Final <br/> Words </h2>
           <p> I got a diploma from my teacher for this project and it felt so surreal reading Skyrim in a diploma certified from the state </p>
+          <Image
+            src={repoName + "/img/outstandingdedication.jpeg"}
+            width={512}
+            height={288}
+            alt="UZI Animation"
+          />
           {/* Outstanding Commitment */}
           <p> Even though there are some things I would approach differently this project taught me so many things. I feel much more confident in tackling new projects now and would love to do something at this scale again. </p>
         </div>
@@ -342,7 +357,8 @@ function Blog() {
     );
   };
   
-const CoverImageSlider = () => {
+const CoverImageSlider = ({ repoName }: any) => {
+  
   const settings = {
     dots: true,
     infinite: true,
@@ -356,11 +372,11 @@ const CoverImageSlider = () => {
 
   const sliderRef = useRef(null);
   const images = [
-    '/img/m4.jpeg',
-    '/img/cover.jpeg',
-    '/img/seats.jpeg',
-    '/img/cell.jpeg',
-    '/img/infirmary.jpeg'
+    `${repoName}/img/m4.jpeg`,
+    `${repoName}/img/cover.jpeg`,
+    `${repoName}/img/seats.jpeg`,
+    `${repoName}/img/cell.jpeg`,
+    `${repoName}/img/infirmary.jpeg`
   ];
 
   return (
@@ -384,7 +400,7 @@ const CoverImageSlider = () => {
   );
 };
 
-const GIFImageSlider = () => {
+const GIFImageSlider = ({ repoName }: any) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -400,9 +416,9 @@ const GIFImageSlider = () => {
 
   const sliderRef = useRef(null);
   const images = [
-    '/img/akanim.gif',
-    '/img/flamethrower.gif',
-    '/img/bodysystem.gif',
+    `${repoName}/img/akanim.gif`,
+    `${repoName}/img/flamethrower.gif`,
+    `${repoName}/img/bodysystem.gif`
   ];
 
   return (
@@ -426,7 +442,7 @@ const GIFImageSlider = () => {
   );
 };
 
-const StickImageSlider = () => {
+const StickImageSlider = ({ repoName }: any) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -441,9 +457,9 @@ const StickImageSlider = () => {
 
   const sliderRef = useRef(null);
   const images = [
-    '/img/animationsystem.gif',
-    '/img/uzianim.gif',
-    '/img/sniperrechamber.gif',
+    `${repoName}/img/animationsystem.gif`,
+    `${repoName}/img/uzianim.gif`,
+    `${repoName}/img/sniperrechamber.gif`,
   ];
 
   return (

@@ -8,16 +8,31 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-const GOTOBlog = () => {
+const GOTOBlog = ({ repoName }: any) => {
     useEffect(() => {
         setTimeout(() => {
             window.location.href = '/blog';
         }, 6000)
     }, []);
-    return (<></>);
+    return (<>
+    <Image style={{ width: '50%', height: 'auto' }}
+            src={repoName + '/img/loading.gif'}
+            width={896*0.8}
+            height={504*0.8}
+            alt="Cover picture"
+          />
+    </>);
 }
 
 const Slideshow = () => {
+  const [useGHPages, setUseGHPages] = useState(true);
+  const [repoName, setRepoName] = useState('');
+  useEffect(() => {
+    if(useGHPages) {
+      setRepoName('/IMIHonigmann');
+    }
+  }, [useGHPages]);
+
 
                 //    button  starting    presents   nothing  passion  DS     BhTS  Blog
     const durations = [0,       5500,       3500,     3500,    4000,  6000,   4500, 3500, 3500, 3500];
@@ -64,7 +79,7 @@ const Slideshow = () => {
       const elem = document.documentElement;
       elem.requestFullscreen();
       
-      const audio = new Audio('/intro.mp3');
+      const audio = new Audio(repoName + '/intro.mp3');
       setTimeout(() => audio.play(), 2000);
       
       setSlideshowStarted(true);
@@ -87,13 +102,13 @@ const Slideshow = () => {
       <p></p>,
       <h1 className="slide-title">A Passion Project <br/>created in 6 Months </h1>,
       <Image
-              src="/img/logo.png"
+              src={repoName + '/img/logo.png'}
               width={1920}
               height={1080}
               alt="logo"
             />,
       <h1 className="slide-title">Behind The Scenes</h1>,
-      <GOTOBlog />
+      <GOTOBlog repoName={repoName} />
     ];
   
     return (

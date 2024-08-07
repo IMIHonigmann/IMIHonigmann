@@ -69,7 +69,7 @@ function Blog() {
             src={repoName + "/img/bodysystem.gif"}
             width={512}
             height={288}
-            alt="UZI Animation"
+            alt="Enemy Body System"
           />
           {/* Middlefinger */}
           <p> This made it possible to assign different damage multipliers based on the limb. </p>
@@ -79,14 +79,14 @@ function Blog() {
             src={repoName + "/img/dismemberment.gif"}
             width={512}
             height={288}
-            alt="UZI Animation"
+            alt="Dismemberment Doodle"
           />
           <div> The more damage the enemy gets the more he walks forward in an injured way which made it possible to see ememy health instinctively without having a big ugly healthbar over their head</div>
           <Image
             src={repoName + "/img/animationblending.gif"}
             width={512}
             height={288}
-            alt="UZI Animation"
+            alt="Bleeding Doodle"
           />
           <br/>
           <div> Now lets see it in action </div>
@@ -145,13 +145,13 @@ function Blog() {
             src={repoName + "/img/flamethrower.gif"}
             width={896}
             height={504}
-            alt="UZI Animation"
+            alt="Spray Flamethrower Animation"
           />
           <Image
             src={repoName + "/img/sniperrechamber.gif"}
             width={896}
             height={504}
-            alt="UZI Animation"
+            alt="Sniper Rechamber Animation"
           />
 
 
@@ -224,7 +224,7 @@ function Blog() {
             width={896}
             height={504}
             style={{ width: '80%', height: 'auto', objectFit: 'cover', maxWidth: '896px', paddingInline: '2px' }}
-            alt="UZI Animation"
+            alt="Aiming Down Sights AUG"
           />
           <h3> Extra: Empty Shots </h3>
           <p> The weapon system is also designed to take in parameters like at how many shots the sound of the gun running empty starts to play. It includes other parameters like the spread and the raycasting range and the raycast takes the normal of the target surface, uses it as an orientation and places a hole decal at the point which creates a bullet impact effect. </p>
@@ -288,13 +288,13 @@ function Blog() {
             src={repoName + "/img/colorless.jpeg"}
             width={896*0.8}
             height={504*0.8}
-            alt="Cover picture"
+            alt="Less Vibrant HDRI Light"
           />
           <Image style={{ padding: '10px', width: '50%', height: 'auto' }}
             src={repoName + "/img/cover.jpeg"}
             width={896*0.8}
             height={504*0.8}
-            alt="Cover picture"
+            alt="Cover Picture"
           />
           </div>
           <h2> The poll results<br/>(drumroll please) </h2>
@@ -305,13 +305,13 @@ function Blog() {
             src={repoName + "/img/then.jpeg"}
             width={512}
             height={288}
-            alt="UZI Animation"
+            alt="UZI Then"
           />
           <Image
             src={repoName + "/img/mg.jpeg"}
             width={512}
             height={288}
-            alt="UZI Animation"
+            alt="MG Sunny"
           />
           
           <p> The way how i got that effect you see in the second image is by increasing the PBR Metalness to give weapons this beautiful shine on the sun. </p>
@@ -325,7 +325,7 @@ function Blog() {
             src={repoName + "/img/outstandingdedication.jpeg"}
             width={512}
             height={288}
-            alt="UZI Animation"
+            alt="Certificate of Outstanding Dedication"
           />
           <p> Even though there are some things I would approach differently this project taught me so many things. I feel much more confident in tackling new projects now and would love to do something at this scale again. 
             Thank you for reading this and I hope you found it interesting.
@@ -368,7 +368,7 @@ function Blog() {
       const handleScroll = () => {
         const scrollPosition = window.scrollY || window.pageYOffset;
     
-        if (scrollPosition > 19700) {
+        if (scrollPosition > 17300) {
           setNum1(7);
           setNum2(21); 
         } else {

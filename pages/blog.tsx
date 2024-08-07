@@ -245,11 +245,37 @@ function Blog() {
           <h2> Sacrifices </h2>
           <p> Although many things have been implemented as I imagined not everything went over smoothly. For instance: Remember the A* Pathfinding Package. Its amazing but not realtime which made the chase concept impossible to implement.</p>
           <p> This was kind of a bummer since doing this puzzle while being chased by a hoard with the music getting more intense by the second was just too cool to not implement. But it is what it is </p>
-          {/* Chase Sequence */}
+          <h3> Step 1: Going out </h3>
+          <Image
+            src={repoName + "/img/inout.gif"}
+            width={512}
+            height={288}
+            alt="Going out of cell and back"
+          />
+          <h3> Step 2: Seeing the chaos unfold </h3>
+          <Image
+            src={repoName + "/img/chase.png"}
+            width={512}
+            height={288}
+            alt="Running Zombies"
+          />
+          <h3> Step 3: <span style={{ color: 'red'}}> RUN MOTHERF*CKER </span></h3>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/QsAV30n1Noc?si=4ypo5sYwaKcYNNfB" 
+          title="YouTube video player" 
+          frameBorder="0" 
+          allow="accelerometer; 
+          autoplay; 
+          clipboard-write; 
+          encrypted-media; 
+          gyroscope;
+          picture-in-picture;
+          web-share"
+          referrerPolicy="strict-origin-when-cross-origin">
+          </iframe>
 
           <p> I also had to hide the grappling hook ability as an easter egg since it broke the game</p>
 
-          <h2> Lighting </h2>
+          <h2 className='lighting'> Lighting </h2>
           <div> I tried out to versions. One with a more natural light and another more stylized light and did a poll on which one was more popular. </div>
           <div> In the second version I chose the colors of the HDRI in a way to give the map a strong breaking bad inspired stylized look. </div>
           <div style={{
@@ -257,13 +283,13 @@ function Blog() {
             justifyContent: 'center', // Centers horizontally
             alignItems: 'center', // Centers vertically
           }}>
-          <Image style={{ padding: '20px' }}
+          <Image style={{ padding: '10px', width: '50%', height: 'auto' }}
             src={repoName + "/img/colorless.jpeg"}
             width={896*0.8}
             height={504*0.8}
             alt="Cover picture"
           />
-          <Image style={{ padding: '20px' }}
+          <Image style={{ padding: '10px', width: '50%', height: 'auto' }}
             src={repoName + "/img/cover.jpeg"}
             width={896*0.8}
             height={504*0.8}
@@ -274,10 +300,20 @@ function Blog() {
           <NumberDiagram />
           <p> So based on that I ran with the second version </p>
           <p> I also love comparing it to older builds and seeing how far the project went </p>
-          {/* UZI Past Version Prison */}
-          {/* MG New Version */}
+          <Image
+            src={repoName + "/img/then.jpeg"}
+            width={512}
+            height={288}
+            alt="UZI Animation"
+          />
+          <Image
+            src={repoName + "/img/mg.jpeg"}
+            width={512}
+            height={288}
+            alt="UZI Animation"
+          />
           
-          <p> I increased the PBR Metalness to give weapons this beautiful shine on the sun. </p>
+          <p> The way how i got that effect you see in the second image is by increasing the PBR Metalness to give weapons this beautiful shine on the sun. </p>
           {/* Gun Images */}
 
           <p> I tinkered a bit with raytracing but this resulted in poor perfoermance and since the pc already had so many things to deal with like the high viewing distance, minimal occlusion and the high enemy counts it was just better to improve the look by hand and the final result turned out better because of it. </p>
@@ -290,8 +326,9 @@ function Blog() {
             height={288}
             alt="UZI Animation"
           />
-          {/* Outstanding Commitment */}
-          <p> Even though there are some things I would approach differently this project taught me so many things. I feel much more confident in tackling new projects now and would love to do something at this scale again. </p>
+          <p> Even though there are some things I would approach differently this project taught me so many things. I feel much more confident in tackling new projects now and would love to do something at this scale again. 
+            Thank you for reading this and I hope you found it interesting.
+          </p>
         </div>
       </MantineProvider>
     );
@@ -329,8 +366,8 @@ function Blog() {
     useEffect(() => {
       const handleScroll = () => {
         const scrollPosition = window.scrollY || window.pageYOffset;
-  
-        if (scrollPosition > 6200) {
+    
+        if (scrollPosition > 7500) {
           setNum1(7);
           setNum2(21); 
         } else {
@@ -338,9 +375,9 @@ function Blog() {
           setNum2(0); 
         }
       };
-  
+    
       window.addEventListener('scroll', handleScroll);
-  
+    
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };

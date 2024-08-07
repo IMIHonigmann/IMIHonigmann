@@ -5,6 +5,7 @@ html, body {
   padding: 0;
   background-color: rgb(244, 244, 244); /* Set background color to cover entire screen */
   letter-spacing: 0px;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -68,4 +69,36 @@ iframe {
   display: block;
     margin: 0 auto; /* Centers all images horizontally */
     max-width: 100%; /* Ensures images are responsive */
+}
+
+.lighting {
+  background: linear-gradient(to right, black, gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 70% 100%;
+  animation: colorChange 6s infinite, flicker 1.4s infinite;
+}
+
+@keyframes colorChange {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 110% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 60%, 62%, 100% {
+      opacity: 1;
+      transform: rotate(3deg);
+  }
+  20%, 61% {
+      opacity: 0.9;
+      transform: rotate(0deg);
+  }
 }

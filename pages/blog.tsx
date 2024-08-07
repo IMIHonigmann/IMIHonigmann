@@ -5,6 +5,7 @@ import './blog.css';
 import { Card, ColorSchemeScript, MantineProvider, Progress } from '@mantine/core';
 import { TextInput, Button, Group } from '@mantine/core';
 import { Bar } from 'react-chartjs-2';
+import ScrollPositionIndicator from './scrollindicator';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -334,10 +335,10 @@ function Blog() {
     );
   }
 
-  const NumberDiagram: React.FC = () => {
-    const [num1, setNum1] = useState<number>(0);
-    const [num2, setNum2] = useState<number>(0);
-  
+  const NumberDiagram: React.FC = () => {  
+    const [num1, setNum1] = useState(0);
+    const [num2, setNum2] = useState(0);
+
     const data = {
       labels: ['Lighting Style'],
       datasets: [
@@ -355,19 +356,19 @@ function Blog() {
     };
   
     const options: ChartOptions<'bar'> = {
-      indexAxis: 'x', // 'x' or 'y' should be accepted now
+      indexAxis: 'x',
       animation: {
         duration: 750, // Duration of the animation in milliseconds
         easing: 'easeInOutCubic', // Easing function for the animation
       },
-      maintainAspectRatio: false, // Allows custom sizing
+      maintainAspectRatio: false,
     };
   
     useEffect(() => {
       const handleScroll = () => {
         const scrollPosition = window.scrollY || window.pageYOffset;
     
-        if (scrollPosition > 7500) {
+        if (scrollPosition > 19700) {
           setNum1(7);
           setNum2(21); 
         } else {
@@ -393,7 +394,7 @@ function Blog() {
       </div>
     );
   };
-  
+
 const CoverImageSlider = ({ repoName }: any) => {
   
   const settings = {

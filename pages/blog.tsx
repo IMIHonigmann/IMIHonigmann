@@ -64,14 +64,13 @@ function Blog() {
           <br/>
           <h2> Body Physics <br/> Dismemberment <br/> Enemy Reactions </h2>
           <p> The game had to feature fully working limb hitboxes which should signal the player that the enemies react to it </p>
-          <p> I solved the problems by creating a ragdoll while using these created newly created physics bones as hitboxes and had some fun in the initial testing </p>
+          <p> I solved the problems by creating a ragdoll while using these newly created physics bones as hitboxes and had some fun in the initial testing </p>
           <Image
             src={repoName + "/img/bodysystem.gif"}
             width={512}
             height={288}
             alt="Enemy Body System"
           />
-          {/* Middlefinger */}
           <p> This made it possible to assign different damage multipliers based on the limb. </p>
           <p> Creating hanging bodies was also possible and works with the shooting </p>
           <div> When the enemy is killed an amplified force is applied on the limb causing the body to fly backwards and the limb disappears and splatters blood all over, creating very satisfying feedback. </div>
@@ -366,7 +365,7 @@ function Blog() {
   
     useEffect(() => {
       const handleScroll = () => {
-        const scrollPosition = window.scrollY || window.pageYOffset;
+        const scrollPosition = window.scrollY;
     
         if (scrollPosition > 17300) {
           setNum1(7);

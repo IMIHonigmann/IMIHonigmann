@@ -25,8 +25,9 @@ const GOTOBlog = ({ repoName }: any) => {
 }
 
 const Slideshow = () => {
-  const [useGHPages, setUseGHPages] = useState(true);
-  const [repoName, setRepoName] = useState('');
+  let clickedOnce: boolean = false;
+  const [useGHPages, setUseGHPages] = useState<boolean>(true);
+  const [repoName, setRepoName] = useState<String>('');
   useEffect(() => {
     if(useGHPages) {
       setRepoName('/IMIHonigmann');
@@ -74,16 +75,20 @@ const Slideshow = () => {
   
     };
   
-    const handleStartSlideshow = () => {
-      document.body.style.zoom = "100%";
-      const elem = document.documentElement;
-      elem.requestFullscreen();
-      
-      const audio = new Audio(repoName + '/intro.mp3');
-      setTimeout(() => audio.play(), 2000);
-      
-      setSlideshowStarted(true);
-      setStep(1);
+    const handleStartSlideshow: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+      if(!clickedOnce) {
+        clickedOnce = true;
+        event.preventDefault();
+        document.body.style.zoom = "100%";
+        const elem = document.documentElement;
+        elem.requestFullscreen();
+        
+        const audio = new Audio(repoName + '/intro.mp3');
+        setTimeout(() => audio.play(), 2000);
+        
+        setSlideshowStarted(true);
+        setStep(1);
+      }
     };
   
     const slides = [

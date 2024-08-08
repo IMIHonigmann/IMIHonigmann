@@ -29,6 +29,7 @@ const Slideshow = () => {
   const [useGHPages, setUseGHPages] = useState<boolean>(true);
   const [repoName, setRepoName] = useState<String>('');
   useEffect(() => {
+    alert(`⚠ BEFORE YOU PROCEED ⚠: \n > Watch it in a computer \n > Set your browser zoom level to 100% \n > Turn on your computer's sound \n \n Trust Me. \n That's all I have to say. Enjoy! ♥`)
     if(useGHPages) {
       setRepoName('/IMIHonigmann');
     }

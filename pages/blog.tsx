@@ -26,7 +26,7 @@ import Image from 'next/image'
 
 function Blog() {
 
-  const [useGHPages, setUseGHPages] = useState<Boolean>(true);
+  const [useGHPages, setUseGHPages] = useState<Boolean>(false);
   const [repoName, setRepoName] = useState<String>('');
   useEffect(() => {
     if(useGHPages) {
@@ -299,7 +299,39 @@ function Blog() {
           <h2> The poll results<br/>(drumroll please) </h2>
           <NumberDiagram />
           <p> So based on that I ran with the second version </p>
-          <p> I also love comparing it to older builds and seeing how far the project went </p>
+          <p> I also did the same for the lighting of the cellblock concept in the first level: </p>
+
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center', // Centers horizontally
+            alignItems: 'center', // Centers vertically
+          }}>
+          <Image style={{ padding: '10px', width: '35%', height: 'auto' }}
+            src={repoName + "/img/blue.jpeg"}
+            width={896}
+            height={504}
+            alt="Blue Cell"
+          />
+          <Image style={{ padding: '10px', width: '35%', height: 'auto' }}
+            src={repoName + "/img/yellow.jpeg"}
+            width={896}
+            height={504}
+            alt="Yellow Cell"
+          />
+          <Image style={{ padding: '10px', width: '35%', height: 'auto' }}
+            src={repoName + "/img/red.jpeg"}
+            width={896}
+            height={504}
+            alt="Red Cell"
+          />
+          </div>
+          <p> However, the results this time were quite mixed. Personally I love red so obviously I had a personal bias for it. This is why I slipped 2 points into red hehehehe 😈 </p>
+          <ColorsDiagram />
+          <p>
+            So ummmm. Red won! 😏
+            This way we have 3 distinctly colored areas. A cold steel blue in the beginning, A hellish red when leaving it and a golden orange-yellow when entering the city. <br/>
+            I also love comparing it to older builds and seeing how far the project went 
+          </p>
           <Image
             src={repoName + "/img/then.jpeg"}
             width={512}
@@ -330,6 +362,7 @@ function Blog() {
             Thank you for reading this and I hope you found it interesting.
           </p>
         </div>
+        {/* <ScrollPositionIndicator /> */}
       </MantineProvider>
     );
   }
@@ -367,12 +400,80 @@ function Blog() {
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
     
-        if (scrollPosition > 17300) {
+        if (scrollPosition > 17500) {
           setNum1(7);
           setNum2(21); 
         } else {
           setNum1(0);
           setNum2(0); 
+        }
+      };
+    
+      window.addEventListener('scroll', handleScroll);
+    
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+  
+    return (
+      <div>
+        <Group style={{ justifyContent: 'center' }}>
+        </Group>
+        <div style={{height: '500px', margin: '0 auto' }}>
+          <Bar data={data} options={options} />
+        </div>
+      </div>
+    );
+  };
+
+  const ColorsDiagram: React.FC = () => {  
+    const [num1, setNum1] = useState(0);
+    const [num2, setNum2] = useState(0);
+    const [num3, setNum3] = useState(0);
+
+    const data = {
+      labels: ['Lighting Color'],
+      datasets: [
+        {
+          label: 'Blue Lighting',
+          data: [num1],
+          backgroundColor: '#003153',
+        },
+        {
+          label: 'Yellow Lighting',
+          data: [num2],
+          backgroundColor: '#FFBF00',
+        },
+        {
+          label: 'Red Lighting (+2 points)',
+          data: [num3],
+          backgroundColor: '#FF2400',
+        },
+      ],
+    };
+  
+    const options: ChartOptions<'bar'> = {
+      indexAxis: 'y',
+      animation: {
+        duration: 750, // Duration of the animation in milliseconds
+        easing: 'easeInOutCubic', // Easing function for the animation
+      },
+      maintainAspectRatio: false,
+    };
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+    
+        if (scrollPosition > 18500) {
+          setNum1(18);
+          setNum2(15);
+          setNum3(17); 
+        } else {
+          setNum1(0);
+          setNum2(0);
+          setNum3(0);
         }
       };
     

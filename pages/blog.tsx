@@ -26,7 +26,7 @@ import Image from 'next/image'
 
 function Blog() {
 
-  const [useGHPages, setUseGHPages] = useState<Boolean>(false);
+  const [useGHPages, setUseGHPages] = useState<Boolean>(true);
   const [repoName, setRepoName] = useState<String>('');
   useEffect(() => {
     if(useGHPages) {

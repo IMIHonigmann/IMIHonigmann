@@ -3,8 +3,6 @@
 </h1>
 <p> Sup 👋 よろしく I am Homam Mousa and specialize in Fullstack Development and CG currently doing an internship in Dubai and planning to study a year abroad in japan. I love to create projects and learning by getting my hands dirty and I'm currently studying International Computer Science at HTW Berlin.</p>
 
-<h2> My Specialties: </h2>
-
 ## Languages and Tools
 
 <br>

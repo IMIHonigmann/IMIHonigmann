@@ -1,7 +1,7 @@
 <h1 align="center">
     <img src="https://readme-typing-svg.herokuapp.com/?font=Inter&size=48&center=true&vCenter=true&width=500&height=70&color=f75c7e&duration=3000&lines='Sup;よろしく!;I'm+Homam;" />
 </h1>
-<p> Sup 👋 よろしく I am Homam Mousa and specialize in Fullstack Development and CG currently doing an internship in Dubai and planning to study a year abroad in japan. I love to create projects and learning by getting my hands dirty and I'm currently studying International Computer Science at HTW Berlin.</p>
+<p> Sup 👋 よろしく I am Homam Mousa and specialize in Fullstack Development and CG. I did an internship in Dubai and plan to study abroad in japan for a year. I love to create projects and learning by getting my hands dirty and I'm currently studying International Computer Science at HTW Berlin.</p>
 
 ## Languages and Tools
 

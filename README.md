@@ -8,11 +8,11 @@
 <br>
 
 <p align="center">
+  <img src="https://skillicons.dev/icons?i=java,cs,dotnet,python,docker,vim,linux" />
+    <br/>
   <img src="https://skillicons.dev/icons?i=ts,nodejs,react,nextjs,threejs,redis,postgres,prisma,graphql" />
-  <br/>
-  <img src="https://skillicons.dev/icons?i=java,spring,cs,dotnet,python,docker,vim,linux,cloudflare,aws,azure,terraform" />
-  <br/>
-  <img src="https://skillicons.dev/icons?i=html,css,sass,tailwind,js,redux,d3,git,postman,electron,vite,unity,blender,pr,ps" />
+    <br/>
+  <img src="https://skillicons.dev/icons?i=html,css,sass,tailwind,redux,postman,vite,unity,blender,pr,ps" />
   <br/>
 </p>
 

@@ -70,7 +70,6 @@ const burgerDivStyles: React.CSSProperties = {
   
   const burgerStyles: React.CSSProperties = {
     rotate: '-5deg',
-    // width: '20%',
   };
 
 
@@ -81,9 +80,9 @@ const burgerDivStyles: React.CSSProperties = {
 
   useEffect(() => {
     if (curOpened) {
-      open();  // Sets 'opened' to true
+      open();
     } else {
-      close();  // Sets 'opened' to false
+      close();
     }
   }, [curOpened, open, close]);
 
@@ -100,55 +99,7 @@ const burgerDivStyles: React.CSSProperties = {
   ));
 
   return (
-    <div style={{display: 'flex' }} className={opened ? classes.dimBG : classes.undimBG}>
-      <title> Homam Mousa </title>
-      <div className={classes.fixedfull}></div>
-      <div ref={ref}>
-        <NavbarSegmented opened={curOpened} />
-        <div style={burgerDivStyles}>
-              <Burger style={burgerStyles} opened={opened} onClick={burgerFunc} aria-label="Toggle navigation" />
-        </div>
-      </div>
-      <div className="" style={{marginLeft: 30 }}>
-        <br/>
-        <br/>
-        <h1 className="text-9xl mt-10"> === WORK IN PROGRESS === </h1>
-        <h1 className="text-9xl mt-10"> Yo </h1>
-        <h2 className="text-7xl mt-10 mb-8"> Whats up</h2>
-        <p> 
-          {`I'm Homam Mousa and currently studying International Computer Science and Media at HTW.
-          Even though I love programming that's not the only thing I'm passionate about`}
-        </p>
-
-        <h1 className="text-9xl mt-10"> {`What I do and learn about`} </h1>
-        {/* <ul>
-          <li> Programming (duh) </li>
-          <li> Math </li>
-          <li> Martial Arts </li>
-        </ul> */}
-          <Accordion variant="default" radius="xl">
-              {items}
-          </Accordion>
-          <div className="flex items-center justify-center h-full">
-            <span> Wilhelminenhofstraße 75A, 12459 Berlin, Germany </span>
-              <CopyButton value="Wilhelminenhofstraße 75A, 12459 Berlin, Germany" timeout={2000}>
-            {({ copied, copy }) => (
-              <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
-                <ActionIcon color={copied ? 'teal' : 'gray'} variant="subtle" onClick={copy}>
-                  {copied ? (
-                    <IconCheck style={{ width: rem(16) }} />
-                  ) : (
-                    <IconCopy style={{ width: rem(16) }} />
-                  )}
-                </ActionIcon>
-              </Tooltip>
-            )}
-            </CopyButton>
-          </div>
-          <br/>
-          <br/>
-      </div>
-    </div>
+    <h1>Work in progress</h1>
   );
   
 }

@@ -1,7 +1,7 @@
 <h1 align="center">
     <img src="https://readme-typing-svg.herokuapp.com/?font=Inter&size=48&center=true&vCenter=true&width=500&height=70&color=f75c7e&duration=3000&lines='Sup;よろしく!;I'm+Homam;" />
 </h1>
-<p> Sup 👋 よろしく I am Homam Mousa and specialize in Fullstack Development and CG. I did an internship in Dubai and plan to study abroad in japan for a year. I love to create projects and learning by getting my hands dirty and I'm currently studying International Computer Science at HTW Berlin.</p>
+<p> Sup 👋 よろしく I am Homam Mousa and specialize in Fullstack Development and 3D. I'm a Computer Science student from HTW Berlin, did an internship in Dubai and now I'm studying abroad in japan. I love to create projects and you'll realize that soon enough once you keep scrolling. Drop me a message if you wanna talk </p>
 
 ## Languages and Tools
 
@@ -21,8 +21,6 @@
   <div align="center">
     
 [![GitHub Streak](https://github-readme-streak-stats-eight.vercel.app/?user=IMIHonigmann&theme=monokai-metallian&mode=daily)](https://git.io/streak-stats)
-
-<img width=325 src="https://github-readme-stats.vercel.app/api/top-langs?username=IMIHonigmann&theme=transparent&layout=donut&hide=css&langs_count=8&border_radius=10&show_icons=true&locale=en" alt="IMIHonigmann's Most Used Languages" />
 </div>
 
 <hr>
